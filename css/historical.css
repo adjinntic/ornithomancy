@@ -1,0 +1,110 @@
+/* Historical Document Styles */
+:root {
+    --parchment: #f4f1e9;
+    --parchment-dark: #d4d0c8;
+    --ink-main: #2c2c2c;
+    --ink-faded: #666;
+}
+
+.historical-document {
+    background: var(--parchment);
+    padding: 3rem;
+    margin: 4rem 0;
+    font-family: 'Crimson Text', Georgia, serif;
+    color: var(--ink-main);
+    border-radius: 4px;
+    position: relative;
+    transform: translateY(-20px);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+    box-shadow: 
+        0 4px 6px rgba(0,0,0,0.1),
+        0 1px 3px rgba(0,0,0,0.1),
+        inset 0 0 100px rgba(0,0,0,0.03);
+}
+
+.historical-document::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, transparent 48%, var(--parchment-dark) 49%, var(--parchment-dark) 51%, transparent 52%),
+        linear-gradient(-45deg, transparent 48%, var(--parchment-dark) 49%, var(--parchment-dark) 51%, transparent 52%);
+    background-size: 30px 30px;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.historical-document::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 24px,
+        rgba(0,0,0,0.02) 24px,
+        rgba(0,0,0,0.02) 25px
+    );
+    pointer-events: none;
+}
+
+.historical-document h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--ink-main);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+}
+
+.historical-document h3 {
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem;
+    color: var(--ink-main);
+    font-weight: normal;
+}
+
+.historical-metadata {
+    font-size: 0.9rem;
+    color: var(--ink-faded);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.margin-note {
+    font-size: 0.85rem;
+    color: var(--ink-faded);
+    font-style: italic;
+    border-left: 2px solid var(--parchment-dark);
+    padding-left: 1rem;
+    margin: 1rem 0 1rem 2rem;
+    opacity: 0.8;
+}
+
+.document-note, .water-damage-note, .editors-note {
+    font-style: italic;
+    color: var(--ink-faded);
+    margin: 1.5rem 0;
+    opacity: 0.9;
+}
+
+.redacted {
+    background: #000;
+    color: transparent;
+    padding: 0 4px;
+    border-radius: 2px;
+    user-select: none;
+}
+
+@keyframes fadeUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

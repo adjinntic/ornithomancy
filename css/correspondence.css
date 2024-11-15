@@ -1,0 +1,78 @@
+/* Correspondence Styles */
+.correspondence {
+    background: #fff;
+    padding: 3rem;
+    margin: 4rem 0;
+    font-family: 'Special Elite', 'American Typewriter', 'Courier New', monospace;
+    color: #2c2c2c;
+    position: relative;
+    letter-spacing: -0.5px;
+    box-shadow: 
+        0 4px 12px rgba(0,0,0,0.1),
+        inset 0 0 100px rgba(0,0,0,0.02);
+    border: 1px solid rgba(0,0,0,0.1);
+    transform: translateY(-20px);
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.correspondence::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            rgba(0,0,0,0.02) 0px,
+            rgba(0,0,0,0.02) 1px,
+            transparent 1px,
+            transparent 25px
+        );
+    pointer-events: none;
+}
+
+.correspondence p {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.correspondence ul {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+}
+
+.correspondence li {
+    margin-bottom: 0.5rem;
+}
+
+.signature {
+    font-size: 1.5rem;
+    color: #000;
+    margin-top: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.signature::after {
+    content: '𝔖';
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: rgba(0,0,0,0.7);
+    transform: translate(1px, 1px);
+}
+
+.post-script {
+    margin-top: 2rem;
+    font-style: italic;
+    color: #444;
+}
+
+@keyframes fadeUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

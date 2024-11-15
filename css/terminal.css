@@ -1,0 +1,125 @@
+/* Terminal Window */
+.editorial {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        0 0 20px rgba(0, 255, 149, 0.1),
+        inset 0 0 32px rgba(0, 255, 149, 0.05);
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+/* Window Header */
+.editorial::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 28px;
+    background: rgba(8, 8, 12, 0.95);
+    border-bottom: 1px solid var(--glass-border);
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Terminal Content */
+.terminal-content {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+/* Prompts */
+.prompt {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 24px;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+.prompt:hover {
+    opacity: 1;
+}
+
+.prompt::before {
+    content: '❯';
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+    opacity: 0.8;
+}
+
+/* System Messages */
+.prompt.system-msg {
+    color: var(--color-tertiary);
+    font-style: italic;
+    opacity: 0.85;
+}
+
+/* Highlighted Messages */
+.prompt.highlight {
+    color: #fff;
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.1) 0%, 
+        rgba(255,255,255,0.05) 100%);
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 2px solid var(--color-primary);
+    margin: 1.5rem 0;
+    opacity: 1;
+}
+
+/* Ambient Glow Effect */
+.editorial::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(0, 255, 149, 0.03) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+/* Cursor Animation */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: var(--color-primary);
+    animation: blink 1s infinite;
+    vertical-align: middle;
+    margin-left: 4px;
+    opacity: 0.8;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Active/Focus States */
+.editorial:hover,
+.editorial:focus-within {
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(0, 255, 149, 0.15),
+        inset 0 0 32px rgba(0, 255, 149, 0.08);
+    transform: translateY(-1px);
+}
